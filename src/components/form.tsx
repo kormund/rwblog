@@ -1,5 +1,6 @@
 import { ReactNode, useEffect } from 'react'
 import { DeepPartial, FieldValues, useForm, ValidationMode } from 'react-hook-form'
+import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ObjectSchema, Maybe, AnyObject } from 'yup'
 import styled from 'styled-components'
@@ -102,6 +103,7 @@ export const Form = <T extends FieldValues>(props: Props<T>) => {
     mode,
   } = props
 
+  // @ts-ignore fix it later
   const {
     register,
     handleSubmit,
@@ -109,7 +111,7 @@ export const Form = <T extends FieldValues>(props: Props<T>) => {
     setError,
   } = useForm<T>({
     mode: mode || 'onChange',
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver<yup.AnyObjectSchema>(validationSchema),
     defaultValues: defaultValues,
   })
 
@@ -125,19 +127,23 @@ export const Form = <T extends FieldValues>(props: Props<T>) => {
     }
   }, [propErrors])
 
-  const fields = fieldsData.map(({ name, label }, i) => {
-    const error = (errors[name]?.message || '') as string
-
-    return (
-      <Input key={`${name}_${i}`} name={name} register={register} label={label} error={error} />
-    )
-  })
-
   return (
     <StyledLoginForm>
       <h2 className='form-title'>{title}</h2>
       <form onSubmit={handleSubmit(submitHandler)}>
-        {fields}
+        {fieldsData.map(({ name, label }, i) => {
+          const error = (errors[name]?.message || '') as string
+
+          return (
+            <Input
+              key={`${name}_${i}`}
+              name={name}
+              register={register}
+              label={label}
+              error={error}
+            />
+          )
+        })}
         {needDataAgree && (
           <Checkbox
             label={'I agree to the processing of my personal information'}
