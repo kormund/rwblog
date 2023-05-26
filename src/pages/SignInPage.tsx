@@ -44,7 +44,7 @@ const SignInPage = () => {
       dispatch(setUser(response.data.user))
       setTimeout(() => {
         navigate('/')
-      }, 1000)
+      }, 500)
     }
   }
 

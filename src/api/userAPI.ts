@@ -11,7 +11,7 @@ export const fetchData: FetchDataType = async (path, options, token) => {
     ...options,
     url: `${baseUrl}/${path}`,
     headers: {
-      Authorization: token && `Token ${token}`,
+      Authorization: token ? `Token ${token}` : undefined,
     },
   })
 }
