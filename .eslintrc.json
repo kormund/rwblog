@@ -24,7 +24,11 @@
       "camelcase": "error",
       "spaced-comment": "error",
       "quotes": ["error", "single"],
-      "no-duplicate-imports": "error"
+      "no-duplicate-imports": "error",
+      "@typescript-eslint/ban-ts-comment": ["error", {
+        "ts-ignore": "allow-with-description"
+      }],
+      "@typescript-eslint/no-explicit-any": "off"
 },
   "settings": {
   "import/resolver": {

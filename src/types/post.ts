@@ -15,6 +15,7 @@ export type PostType = {
   favorited: boolean
   favoritesCount: number
   author: PostAuthorType
+  post: null
 }
 
 export type PostsResponse = {
@@ -24,4 +25,9 @@ export type PostsResponse = {
 
 export type PostResponse = {
   article: PostType
+}
+
+export type RequestOptionsType = {
+  method: 'GET' | 'POST' | 'DELETE' | 'PUT'
+  data?: object
 }

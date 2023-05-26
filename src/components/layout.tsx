@@ -5,7 +5,9 @@ function Layout() {
   return (
     <>
       <Header />
-      <Outlet></Outlet>
+      <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        <Outlet></Outlet>
+      </div>
     </>
   )
 }

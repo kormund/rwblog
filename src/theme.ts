@@ -19,10 +19,36 @@ export const defaultTheme: DefaultTheme = {
 }
 
 export const Global = createGlobalStyle`
-  body {
+  * {
     margin: 0;
     padding: 0;
-    background: ${({ theme }) => theme.background};
     font-family: 'Inter', sans-serif;
+    font-weight: lighter;
+    box-sizing: border-box;
+  },
+  h1 {
+    font-size: 44px;
+    line-height: 76px;
+  },
+  h2 {
+    font-size: 56px;
+    line-height: 64px;
+  },
+  h3 {
+    font-size: 30px;
+    line-height: 36px;
+  },
+  h4 {
+    font-size: 24px;
+    line-height: 32px;
+  },
+  h5 {
+    font-size: 20px;
+    line-height: 28px;
+  },
+  
+  h6 {
+    font-size: 18px;
+    line-height: 28px;
   }
 `
